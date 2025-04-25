@@ -139,6 +139,9 @@ second_slope, second_intercept = regrecion_lineal(second_dataframe)
 
 #Ademas hay condiciones iniciales, velocidad y desplazamiento.
 
+#Recordar que puedo calcular Td. a partir de las mediciones de tiempo
+
+
 
 
 
