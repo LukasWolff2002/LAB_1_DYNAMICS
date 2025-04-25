@@ -9,8 +9,6 @@ g = 9.81
 # Cargar el archivo txt en un DataFrame de pandas
 data = pd.read_csv('DATA/Pullback.txt', sep='\\s+', header=None, names=["t", "a1", "a2"])
 
-
-
 #Data es un txt que contine las siguientes columnas
 #tiempo, aceleracion superior, acelracion base
 
@@ -71,9 +69,6 @@ def limpiar_datos(data):
 # Limpiar los datos
 data = limpiar_datos(data)
 
-# Mostrar el DataFrame limpio
-print(data)
-
 def plot_data (data):
     plt.figure(figsize=(10, 5))
 
@@ -97,7 +92,6 @@ data_0_10 = data[(data['t'] >= 0) & (data['t'] <= 10)]
 # Encontrar el primer máximo en el intervalo 0-10 segundos
 max_idx = data_0_10['a1'].idxmax()
 max_time = data_0_10.loc[max_idx, 't']
-print(f"Primer máximo en el intervalo 0-10 segundos: {max_time} segundos")
 
 # Filtrar el intervalo de 30-35 segundos para el primer test
 data_30_35 = data[(data['t'] >= 30) & (data['t'] <= 35)]
@@ -106,7 +100,6 @@ data_30_35 = data[(data['t'] >= 30) & (data['t'] <= 35)]
 min_idx = (data_30_35['a1'].abs()).idxmin()
 min_time = data_30_35.loc[min_idx, 't']
 min_value = data_30_35.loc[min_idx, 'a1']
-print(f"Mínimo absoluto en el intervalo 30-35 segundos: {min_time} segundos, valor: {min_value}")
 
 # Ahora filtramos el dataframe entre el primer máximo y el mínimo absoluto
 first_dataframe = data[(data['t'] >= max_time) & (data['t'] <= min_time)].copy()
@@ -115,7 +108,6 @@ first_dataframe = data[(data['t'] >= max_time) & (data['t'] <= min_time)].copy()
 first_dataframe['t'] = first_dataframe['t'] - first_dataframe['t'].iloc[0]
 
 # El primer dataframe está listo
-print(f"Primer dataframe tiene {len(first_dataframe)} filas")
 first_dataframe.head()
 
 # Filtrar el intervalo de 30-40 segundos para el segundo test
@@ -125,7 +117,6 @@ data_30_40 = data[(data['t'] >= 30) & (data['t'] <= 40)]
 max_30_40_idx = data_30_40['a1'].idxmax()
 max_30_40_time = data_30_40.loc[max_30_40_idx, 't']
 max_30_40_value = data_30_40.loc[max_30_40_idx, 'a1']
-print(f"Máximo en el intervalo 30-40 segundos: {max_30_40_time} segundos, valor: {max_30_40_value}")
 
 # Recortar el segundo dataframe para que tenga la misma longitud que el primer dataframe
 second_dataframe = data[(data['t'] >= max_30_40_time) & (data['t'] <= max_30_40_time + (first_dataframe['t'].iloc[-1] - first_dataframe['t'].iloc[0]))].copy()
@@ -134,7 +125,6 @@ second_dataframe = data[(data['t'] >= max_30_40_time) & (data['t'] <= max_30_40_
 second_dataframe['t'] = second_dataframe['t'] - second_dataframe['t'].iloc[0]
 
 # El segundo dataframe está listo
-print(f"Segundo dataframe tiene {len(second_dataframe)} filas")
 second_dataframe.head()
 
 def plot_pullback(data):
@@ -196,15 +186,13 @@ def calcular_Td(data):
     
     return Td
 
-print(first_dataframe)
+
 
 first_slope, first_intercept = regrecion_lineal(first_dataframe)
 second_slope, second_intercept = regrecion_lineal(second_dataframe)
 
 first_Td = calcular_Td(first_dataframe)
 second_Td = calcular_Td(second_dataframe)
-
-print(f"Primer test: pendiente = {first_slope}, intercepto = {first_intercept}, Td = {first_Td}")
 
 #Luego, como es aceleracion, se que la aceleracion maxima se puede calcular como:
 #a_max = -rho omega_n**2 e**(-betha omegan t) cos(omega_d t - phi - 2phi1)
@@ -223,40 +211,34 @@ print(f"Primer test: pendiente = {first_slope}, intercepto = {first_intercept}, 
 #Por lo tanto tengo dos ecuaciones
 
 # Definir las incógnitas
-betha, omega_n = symbols('betha omega_n')
 
-# Ecuaciones del primer test
-eq1 = Eq(betha * omega_n, first_slope)
-eq2 = Eq((2 * pi) / first_Td, omega_n * sqrt(1 - betha**2))
+def solve_sistem(first_slope, first_Td):
+    # Definir las variables simbólicas
+    betha, omega_n = symbols('betha omega_n')
 
-# Resolver el sistema de ecuaciones
-solution1 = solve((eq1, eq2), (betha, omega_n))
+    # Ecuaciones del primer test
+    eq1 = Eq(betha * omega_n, first_slope)
+    eq2 = Eq((2 * pi) / first_Td, omega_n * sqrt(1 - betha**2))
 
-# Verificar si hay soluciones
-if solution1:
-    # Desempaquetar las soluciones de la tupla
-    beta_value, omega_n_value = solution1[0]  # Accede a la primera tupla de soluciones
-    print(f"Primer test: beta = {beta_value}, omega_n = {omega_n_value}")
-    print(f'la frecuencia natural es {(omega_n_value/(2*np.pi))} Hz')
+    # Resolver el sistema de ecuaciones
+    solution1 = solve((eq1, eq2), (betha, omega_n))
 
+    # Verificar si hay soluciones
+    if solution1:
+        # Desempaquetar las soluciones de la tupla
+        beta_value, omega_n_value = solution1[0]  # Accede a la primera tupla de soluciones
+        
+        return beta_value, omega_n_value
+    
+first_beta, first_omega_n = solve_sistem(first_slope, first_Td)
+print('\nResultados de la regrecion lineal:')
+print(f"Primer test: beta = {first_beta}, omega_n = {first_omega_n}")
 
-
-
-
-
-
-
-
-
-
-
-
-
+# Repetir el proceso para el segundo test
+second_beta, second_omega_n = solve_sistem(second_slope, second_Td)
+print(f"Segundo test: beta = {second_beta}, omega_n = {second_omega_n}")
 
 # Función para graficar la transformada de Fourier
-import numpy as np
-import matplotlib.pyplot as plt
-
 def plot_fourier_transform(data, title="Transformada de Fourier"):
     N = len(data['t'])
     dt = data['t'].iloc[1] - data['t'].iloc[0]  # Paso de tiempo
@@ -299,7 +281,17 @@ def plot_fourier_transform(data, title="Transformada de Fourier"):
         plt.tight_layout()
         plt.show()
 
+        return max_freq
+
 
 # Graficar la transformada de Fourier para el primer y segundo test
-plot_fourier_transform(first_dataframe, title="Transformada de Fourier - Primer Test")
-plot_fourier_transform(second_dataframe, title="Transformada de Fourier - Segundo Test")
+max_frec_furier_first = plot_fourier_transform(first_dataframe, title="Transformada de Fourier - Primer Test")
+max_frec_furier_second = plot_fourier_transform(second_dataframe, title="Transformada de Fourier - Segundo Test")
+
+print('\nSegun la regrecion lineal:')
+print(f'la frecuencia de la transformada de Fourier es: {first_omega_n/(2*np.pi)} Hz')
+print(f'la frecuencia de la transformada de Fourier es: {second_omega_n/(2*np.pi)} Hz')
+
+print('\nSegun la transformada de Fourier:')
+print(f'La frecuencia de la transformada de Fourier es: {max_frec_furier_first} Hz')
+print(f'La frecuencia de la transformada de Fourier es: {max_frec_furier_second} Hz')
