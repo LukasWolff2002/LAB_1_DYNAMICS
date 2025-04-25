@@ -121,12 +121,25 @@ def regrecion_lineal (data):
     plt.show()
     plt.close()
 
-    return slope, intercept
+    return np.abs(slope), intercept
 
 firs_slope, first_intercept = regrecion_lineal(first_dataframe)
 second_slope, second_intercept = regrecion_lineal(second_dataframe)
 
 #Luego, como es aceleracion, se que la aceleracion maxima se puede calcular como:
+#a_max = -rho omega_n**2 e**(-betha omegan t) cos(omega_d t - phi - 2phi1)
+#Pero es maximo cuando cos() = +-1
+
+#Por lo tanto, y aplicando log natural
+#ln(a_max) = ln(rho omegan**2) - betha omegan t 
+
+#Por lo tanto
+#rho omegan**2 = intercept
+#betha omegan = slope, ambos son positivos
+
+#Ademas hay condiciones iniciales, velocidad y desplazamiento.
+
+
 
 
 

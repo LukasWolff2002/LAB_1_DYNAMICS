@@ -2,7 +2,7 @@
 
 #Material
 E = 200000 #MPa
-rho = 7850 #kg/m3
+densidad = 7850 #kg/m3
 
 #Sensores
 Frecuencia_muestreo = 300 #Hz
@@ -13,7 +13,7 @@ lbarra = 42.5/100 #m, longitud de la barra
 mbarra = 324.6/1000 #Kg, masa total de la barra
 
 #Union barra masa sup
-munion = 100/1000 #Kg ARREGLAR
+munion = 100/1000 #Kg ARREGLAR0
 
 #Masa puntual Superior
 msuperior = 100/1000 #Kg, ARREGLAR
