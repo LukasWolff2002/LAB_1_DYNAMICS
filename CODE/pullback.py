@@ -78,7 +78,7 @@ def plot_data (data):
     plt.xlabel('Tiempo (t)')
     plt.ylabel('a1')
     plt.tight_layout()
-    plt.show()
+    plt.savefig('INFORME/GRAFICOS/t_vs_a1.png', dpi=300)
     plt.close()
 
 plot_data(data)
@@ -127,7 +127,7 @@ second_dataframe['t'] = second_dataframe['t'] - second_dataframe['t'].iloc[0]
 # El segundo dataframe está listo
 second_dataframe.head()
 
-def plot_pullback(data):
+def plot_pullback(data, title):
     # Graficar el primer intervalo (0-35 segundos)
     plt.figure(figsize=(6, 5))
     plt.plot(data['t'], data['a1'], label='a1', color='blue')
@@ -135,17 +135,17 @@ def plot_pullback(data):
     plt.xlabel('Tiempo (t)')
     plt.ylabel('a1')
     plt.tight_layout()
-    plt.show()
+    plt.savefig(f'INFORME/GRAFICOS/pullback_{title}.png', dpi=300)
     plt.close()
 
-plot_pullback(first_dataframe)
-plot_pullback(second_dataframe)
+plot_pullback(first_dataframe, 'first')
+plot_pullback(second_dataframe, 'second')
 
 # Ahora agrego una nueva columna a cada dataframe para poder hacer la regresión lineal
 first_dataframe.loc[:, 'ln_a1'] = np.log(np.abs(first_dataframe['a1'] * g))
 second_dataframe.loc[:, 'ln_a1'] = np.log(np.abs(second_dataframe['a1'] * g))
 
-def regrecion_lineal (data):
+def regrecion_lineal (data, title):
 
     # Realizar la regresión lineal
     slope, intercept, r_value, p_value, std_err = linregress(data['t'], data['ln_a1'])
@@ -172,7 +172,7 @@ def regrecion_lineal (data):
 
     # Ajustar y mostrar el gráfico
     plt.tight_layout()
-    plt.show()
+    plt.savefig(f'INFORME/GRAFICOS/regresion_lineal_{title}.png', dpi=300)
     plt.close()
 
     return np.abs(slope), intercept
@@ -188,8 +188,8 @@ def calcular_Td(data):
 
 
 
-first_slope, first_intercept = regrecion_lineal(first_dataframe)
-second_slope, second_intercept = regrecion_lineal(second_dataframe)
+first_slope, first_intercept = regrecion_lineal(first_dataframe, 'first')
+second_slope, second_intercept = regrecion_lineal(second_dataframe, 'second')
 
 first_Td = calcular_Td(first_dataframe)
 second_Td = calcular_Td(second_dataframe)
@@ -239,7 +239,7 @@ second_beta, second_omega_n = solve_sistem(second_slope, second_Td)
 print(f"Segundo test: beta = {second_beta}, omega_n = {second_omega_n}")
 
 # Función para graficar la transformada de Fourier
-def plot_fourier_transform(data, title="Transformada de Fourier"):
+def plot_fourier_transform(data, title):
     N = len(data['t'])
     dt = data['t'].iloc[1] - data['t'].iloc[0]  # Paso de tiempo
     f = np.fft.fftfreq(N, dt)  # Frecuencias
@@ -279,7 +279,7 @@ def plot_fourier_transform(data, title="Transformada de Fourier"):
         
         # Ajustar y mostrar el gráfico
         plt.tight_layout()
-        plt.show()
+        plt.savefig(f'INFORME/GRAFICOS/FFT_{title}.png', dpi=300)
 
         return max_freq
 
@@ -289,9 +289,23 @@ max_frec_furier_first = plot_fourier_transform(first_dataframe, title="Transform
 max_frec_furier_second = plot_fourier_transform(second_dataframe, title="Transformada de Fourier - Segundo Test")
 
 print('\nSegun la regrecion lineal:')
-print(f'la frecuencia de la transformada de Fourier es: {first_omega_n/(2*np.pi)} Hz')
-print(f'la frecuencia de la transformada de Fourier es: {second_omega_n/(2*np.pi)} Hz')
+print(f'la frecuencia del primer test calculada es: {first_omega_n/(2*np.pi)} Hz')
+print(f'la frecuencia del segundo test calculada es: {second_omega_n/(2*np.pi)} Hz')
 
 print('\nSegun la transformada de Fourier:')
-print(f'La frecuencia de la transformada de Fourier es: {max_frec_furier_first} Hz')
-print(f'La frecuencia de la transformada de Fourier es: {max_frec_furier_second} Hz')
+print(f'La frecuencia de la transformada de Fourier en el primer test es: {max_frec_furier_first} Hz')
+print(f'La frecuencia de la transformada de Fourier en el segundo test es: {max_frec_furier_second} Hz')
+
+#Guardo los resultados como variable
+
+omega_n = np.mean([first_omega_n, second_omega_n])
+beta = np.mean([first_beta, second_beta])
+
+print(f'\nLa frecuencia media es: {omega_n/(2*np.pi)} Hz')
+print(f'El beta medio es: {beta}')
+
+#Guardo los resultados en un archivo de texto
+with open('CODE/valores.txt', 'w') as f:
+    f.write(f'omega_n: {omega_n}\n')
+    f.write(f'beta: {beta}\n')
+
