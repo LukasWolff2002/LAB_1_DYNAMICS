@@ -216,18 +216,3 @@ plt.title('Espectro de Frecuencia de a2')
 plt.grid(True)
 plt.xlim(0, 50)  # Limitar la frecuencia visible
 plt.show()
-
-# --- Ahora hacemos la IFFT sobre el fft_a2_full ---
-a2_recuperada = np.fft.ifft(fft_a2_full)
-a2_recuperada_real = np.real(a2_recuperada)
-
-# --- Comparar ---
-plt.figure(figsize=(12, 6))
-plt.plot(t, a2, label='Señal Original a2', alpha=0.7)
-plt.plot(t, a2_recuperada_real, '--', label='Señal Recuperada (IFFT)', alpha=0.7)
-plt.xlabel('Tiempo [s]')
-plt.ylabel('Aceleración')
-plt.title('Comparación entre Señal Original y Señal Recuperada')
-plt.legend()
-plt.grid(True)
-plt.show()
