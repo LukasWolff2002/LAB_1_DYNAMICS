@@ -103,24 +103,24 @@ peaks_a2 = extract_peaks_with_time(data['t'], data['a2'])
 import matplotlib.pyplot as plt
 
 # Gráfico de peaks_a1
-plt.figure(figsize=(10, 5))
-plt.plot(peaks_a1['t'], peaks_a1['valor'], linestyle='-', color='red', label='Picos a1')
-plt.xlabel('Tiempo [s]')
-plt.ylabel('Aceleración a1')
-plt.title('Picos conectados en a1')
-plt.legend()
-plt.grid(True)
-plt.show()
+# plt.figure(figsize=(10, 5))
+# plt.plot(peaks_a1['t'], peaks_a1['valor'], linestyle='-', color='red', label='Picos a1')
+# plt.xlabel('Tiempo [s]')
+# plt.ylabel('Aceleración a1')
+# plt.title('Picos conectados en a1')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
 
-# Gráfico de peaks_a2
-plt.figure(figsize=(10, 5))
-plt.plot(peaks_a2['t'], peaks_a2['valor'], linestyle='-', color='blue', label='Picos a2')
-plt.xlabel('Tiempo [s]')
-plt.ylabel('Aceleración a2')
-plt.title('Picos conectados en a2')
-plt.legend()
-plt.grid(True)
-plt.show()
+# # Gráfico de peaks_a2
+# plt.figure(figsize=(10, 5))
+# plt.plot(peaks_a2['t'], peaks_a2['valor'], linestyle='-', color='blue', label='Picos a2')
+# plt.xlabel('Tiempo [s]')
+# plt.ylabel('Aceleración a2')
+# plt.title('Picos conectados en a2')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
 
 #Por lo tanto, ahora debo obtener la frecuencia de excitacion del suelo
 
@@ -145,13 +145,13 @@ frecuencia_a2 = pd.DataFrame({
 })
 
 # --- Graficar ---
-plt.figure(figsize=(10, 5))
-plt.plot(frecuencia_a2['t'], frecuencia_a2['frecuencia'], linestyle='-')
-plt.xlabel('Tiempo [s]')
-plt.ylabel('Frecuencia Instantánea [Hz]')
-plt.title('Frecuencia Instantánea basada en picos de a2')
-plt.grid(True)
-plt.show()
+# plt.figure(figsize=(10, 5))
+# plt.plot(frecuencia_a2['t'], frecuencia_a2['frecuencia'], linestyle='-')
+# plt.xlabel('Tiempo [s]')
+# plt.ylabel('Frecuencia Instantánea [Hz]')
+# plt.title('Frecuencia Instantánea basada en picos de a2')
+# plt.grid(True)
+# plt.show()
 
 #Puedo alicar una convolucion para suavizar la frecuencia y tener datos mas precisos para trabajar
 
@@ -168,15 +168,15 @@ frecuencia_suavizada = np.convolve(frecuencia_a2['frecuencia'], window, mode='sa
 frecuencia_a2['frecuencia_suavizada'] = frecuencia_suavizada
 
 # --- Graficar ---
-plt.figure(figsize=(10, 5))
-plt.plot(frecuencia_a2['t'], frecuencia_a2['frecuencia'], linestyle='-', label='Frecuencia Original')
-plt.plot(frecuencia_a2['t'], frecuencia_a2['frecuencia_suavizada'], color='red', linewidth=2, label='Frecuencia Suavizada')
-plt.xlabel('Tiempo [s]')
-plt.ylabel('Frecuencia [Hz]')
-plt.title('Frecuencia Instantánea y Suavizada')
-plt.legend()
-plt.grid(True)
-plt.show()
+# plt.figure(figsize=(10, 5))
+# plt.plot(frecuencia_a2['t'], frecuencia_a2['frecuencia'], linestyle='-', label='Frecuencia Original')
+# plt.plot(frecuencia_a2['t'], frecuencia_a2['frecuencia_suavizada'], color='red', linewidth=2, label='Frecuencia Suavizada')
+# plt.xlabel('Tiempo [s]')
+# plt.ylabel('Frecuencia [Hz]')
+# plt.title('Frecuencia Instantánea y Suavizada')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
 
 
 #Los datos aun estan muy sucios
@@ -204,15 +204,31 @@ mask = frecuencias >= 0
 frecuencias_plot = frecuencias[mask]
 fft_a2_plot = fft_a2_full[mask]
 
+def list_max_frequency(lista):
+    """Devuelve una lista de las 7 frecuencias maximas de la lista."""
+    lista_ordenada = sorted(lista, reverse=True)
+    lista_max = lista_ordenada[:7]  # Tomar las 7 frecuencias más altas
+    lista_max_frec = []
+    for i in range(len(lista_max)):
+        index = lista.index(lista_max[i])
+        lista_max_frec.append(frecuencias_plot[index])
+    return lista_max_frec
+
+max_frec_1 = list_max_frequency(frecuencias_plot)
+max_frec_2 = list_max_frequency(fft_a2_plot)
+# --- Graficar el espectro ---
+print(max_frec_1)
+print(max_frec_2)
+
 # Para graficar el espectro
 amplitud = np.abs(fft_a2_plot)
 
 # --- Graficar solo para espectro ---
-plt.figure(figsize=(10, 5))
-plt.plot(frecuencias_plot, amplitud)
-plt.xlabel('Frecuencia [Hz]')
-plt.ylabel('Amplitud')
-plt.title('Espectro de Frecuencia de a2')
-plt.grid(True)
-plt.xlim(0, 50)  # Limitar la frecuencia visible
-plt.show()
+# plt.figure(figsize=(10, 5))
+# plt.plot(frecuencias_plot, amplitud)
+# plt.xlabel('Frecuencia [Hz]')
+# plt.ylabel('Amplitud')
+# plt.title('Espectro de Frecuencia de a2')
+# plt.grid(True)
+# plt.xlim(0, 50)  # Limitar la frecuencia visible
+# plt.show()
