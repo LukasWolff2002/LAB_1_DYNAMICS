@@ -281,7 +281,56 @@ $$\omega_n = \bar{\omega}$$
 
 For an undamped system the factor of amplification is infinite, which means that the system will oscillate indefinitely with increasing amplitude. In real systems, damping reduces the maximum amplitude of oscillations, but resonance can still lead to significant increases in amplitude. This means, if the resonance is not controlled, it can cause structural damage or failure. 
 
- 
+\newpage
+\section{Instrumentation Details} 
 
+\subsection{Endevco 44A16 Accelerometer}
+
+The Endevco model 44A16 accelerometer is a triaxial IEPE (Integrated Electronics Piezo-Electric) sensor, designed for general-purpose vibration measurement applications, such as the dynamic analysis of the SDOF structure carried out in this laboratory. 
+
+This model has a sensitivity of 100~mV/g and a measurement range of $\pm$50~g, which allows it to record significant accelerations without saturating the signal. In addition, it offers a useful frequency response range between 0.6~Hz and 5000~Hz depending on the axis, enabling it to capture the dynamic responses of various systems.
+
+
+\subsection{QuantumX CX22B-W Data Acquisition System}
+
+The QuantumX CX22B-W data acquisition system by HBM is a high-performance standalone data logger designed to capture, analyze, and store mechanical, electrical, or thermal variables without the need to be connected to an external computer. It is particularly useful for capturing data in structural analysis, as it can process data in real time and operate with multiple channels.
+
+This device is equipped with a quad-core Intel Atom E3845 processor running at 1.9~GHz, 4~GB of RAM, and 240~GB of internal storage, in addition to a slot for a CFast card of up to 512~GB, which allows for extended data recording periods. It supports a maximum total sampling rate of 5~MS/s, making it capable of capturing high-frequency dynamic phenomena. Through its various input options, the system can integrate multiple types of sensors such as GPS units, cameras, and force sensors, among others.
+
+For data analysis and visualization, the software \textit{Catman Easy} version 5.1.3 was used. This program enables the configuration of measurements and real-time data visualization, and allows automatic analysis such as the Fast Fourier Transform (FFT). In this case, acceleration responses were recorded and the FFT results were displayed every 5 seconds.
+
+
+\subsection{TDG-250 KG Shaking Table}
+
+The TDG-250 KG shaking table, manufactured by Teknik Destek Grubu, is a uniaxial seismic motion simulator designed for conducting structural dynamic tests in laboratory settings. Its maximum dynamic load capacity is 250~kg when applying an acceleration of 1~g, while for lighter loads of up to 100~kg, it can reach accelerations of up to $\pm$2~g. The table has a maximum stroke of $\pm$200~mm, a peak velocity of 800~mm/s, and an operational frequency of 15~Hz, making it suitable for a variety of dynamic input signals. Its displacement resolution is 0.0025~mm, providing high precision in motion control.
+
+The system is driven by a servomotor and controlled via a closed-loop PID controller. It operates with a three-phase power supply of 3.3~kW at 380--480~V AC and 50 or 60~Hz.
+
+The shaking table is operated using the \textit{Easy Test Shake Table} software, which allows the user to import and reproduce real earthquake records, such as those from Concepción, Chile or Kobe, Japan, as well as generate custom signals. The software supports various types of dynamic inputs, and during testing, it provides real-time visualization of acceleration, velocity, and displacement profiles, along with Fast Fourier Transform (FFT) results and response spectra.
+
+\newpage
+\section{Signal Processing}
+
+Signal processing is carried out to prepare raw signals obtained from the sensors prior to analysis. This process includes two main techniques: detrending and digital filtering. Detrending involves removing constant components or linear trends from the signal, which may result from initial displacements, systematic errors, or very low-frequency noise. This technique allows the signal to be centered around zero, a necessary condition for computing parameters such as velocity and displacement.
+
+Next, digital filtering is used to eliminate unwanted components from the signal, such as high-frequency noise or low-frequency elements that are not part of the structural response being analyzed.
+
+Both techniques are implemented using the \textit{Catman Easy} software version 5.1.3, in conjunction with the QuantumX CX22B-W data acquisition system by HBM. This setup enables the recording and real-time visualization of the measured signals, as well as the application of digital processing during or after the test. Additionally, the software allows for the automatic visualization of the Fast Fourier Transform (FFT) at defined intervals, enabling the identification of dominant frequencies and the analysis of the dynamic behavior of the structure.
+
+
+\newpage
+\section{Laboratory Methodology}
+
+The objective of this laboratory was to analyze the dynamic behavior of a single-degree-of-freedom (SDOF) structural system. To achieve this, a shaking table, acceleration sensors, and a data acquisition system were used.
+
+First, a pull-back test was performed, which consisted of applying an initial lateral displacement to the system's mass and then releasing it to observe its free response. This test allowed the determination of the system’s natural period and damping ratio through the analysis of the acceleration signal using the logarithmic decrement method.
+
+Subsequently, a harmonic loading test was conducted, in which the shaking table was programmed to generate sinusoidal motions with specific frequencies and amplitudes. This test enabled the observation of the resonance phenomenon by analyzing how the response amplitude varies with the excitation frequency.
+
+Finally, a seismic test was carried out using real earthquake records. The earthquakes from Kobe and Concepción (27F) were scaled and reproduced on the shaking table. The aim was to observe the system’s response to complex excitations and to assess its structural behavior under seismic events.
+
+Data collection was performed using an Endevco 44A16 accelerometer connected to the QuantumX CX22B-W data acquisition system. The signals were sampled at a frequency of 300~Hz, which allowed for precise recording of the system's dynamic response over time. The \textit{Catman Easy} software version 5.1.3 was used to record, visualize, and process the signals in real time, including the computation of the Fast Fourier Transform (FFT) every 5 seconds.
+
+Post-processing of the data enabled the identification of the system’s dynamic parameters and characterization of its behavior under different types of excitation.
 
 \end{document} 
