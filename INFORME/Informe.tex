@@ -280,7 +280,55 @@ Resonance is a phenomenon that occurs when the frequency of an external force ma
 $$\omega_n = \bar{\omega}$$
 
 For an undamped system the factor of amplification is infinite, which means that the system will oscillate indefinitely with increasing amplitude. In real systems, damping reduces the maximum amplitude of oscillations, but resonance can still lead to significant increases in amplitude. This means, if the resonance is not controlled, it can cause structural damage or failure. 
+\newpage
+\section{Structure Description}
 
+The structure analyzed in this laboratory corresponds to a single-degree-of-freedom (SDOF) system subjected to free vibration. It consists of a rigid top mass supported vertically by a steel rod, as shown in Figure~\ref{fig:sdof}. The system is equipped with an Endevco 44A16 accelerometer to capture the dynamic response.
+
+\textbf{Mass:} \\
+The total mass $m$ of the system includes the following components:
+
+\begin{itemize}
+    \item Endevco 44A16 accelerometer: 13 g
+    \item Three steel plates: 426 g
+    \item Top plate (excluding bolts): 146.8 g
+    \item Top bolts and nuts: 21.5 g
+\end{itemize}
+
+The total mass is:
+\[
+m = (13 + 426 + 146.8 + 21.5)\,\text{g} = 607.3\,\text{g} = 0.6073\,\text{kg}
+\]
+
+\textbf{Stiffness:} \\
+The stiffness of the system is derived from the bending stiffness of the vertical steel rod, modeled as cantilever beams. The theoretical stiffness of each column is given by:
+
+\[
+K_{\text{column}} = \frac{3EI}{L^3}
+\]
+
+Where:
+\begin{itemize}
+    \item $E = 200$ GPa is the Young's modulus of steel,
+    \item $I = \frac{1}{12} b h^3$ is the second moment of area of the cross-section,
+    \item $b = 3$ mm and $h = 25$ mm are the width and height of the rectangular cross-section,
+    \item $L$ is the column height 42.5 cm.
+\end{itemize}
+
+Using $I = \frac{1}{12}(0.025)(0.003)^3 = 5.625 \times 10^{-11}$ m$^4$, the total stiffness is:
+
+\[
+K = \frac{3EI}{L^3} = 439.65 \text{N/m}
+\]
+
+\textbf{Natural Frequency:} \\
+The theoretical natural frequency is computed from:
+
+\[
+\omega_n = \sqrt{\frac{K}{m}}= 26.9 rad/s, \qquad f_n = \frac{\omega_n}{2\pi} = 4.28 \text{Hz}
+\]
+
+These expressions allow us to estimate the dynamic properties of the SDOF system analytically.
 \newpage
 \section{Instrumentation Details} 
 
