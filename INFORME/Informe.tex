@@ -247,6 +247,7 @@ With this parameter, we can determine the damping ratio of the system using the 
 
 \begin{equation}
 \beta = \frac{\delta}{\sqrt{4\pi^2 + \delta^2}}
+\label{eq:log_dec}
 \end{equation}
 Where:
 \begin{itemize}
@@ -383,6 +384,49 @@ Post-processing of the data enabled the identification of the system’s dynamic
 
 \newpage
 \section{Results}
+ 
+\subsection{Pull-back Test}
+\subsubsection{Determination of the damping period, natural period and damping ratio}
+To determine the period of the systems, we used the logarithmic decrement method. This method is based on the analysis of the acceleration signal obtained from the accelerometer during the pull-back test. The logarithmic decrement is calculated using equation (\ref{eq:log_dec}).\\
+First, we analised the acceleration signal obtained from the system without damping (system 1). The signal was detrended and filtered to remove unwanted components. After that, we calculated the logarithmic decrement and plotted the results that are shown in Figure~\ref{fig:pullback1}.
+
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{GRAFICOS/regresion_lineal_first.png}
+  \caption{Logarithmic decrement of the pull-back test.}
+  \label{fig:pullback1}  
+\end{figure}
+
+Then, we analised the acceleration signal obtained from the system with damping (system 2). The signal was detrended and filtered to remove unwanted components. The resulting signal is shown in Figure~\ref{fig:pullback2}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{GRAFICOS/regresion_lineal_second.png}
+  \caption{Logarithmic decrement of the pull-back test.}
+  \label{fig:pullback2}  
+\end{figure}
+
+\begin{table}[h]
+\centering
+  \begin{tabular}{|c|c|c|}
+  \hline
+  \textbf{Item}& \textbf{System 1}& \textbf{System 2} \\ \hline
+  \textbf{$\omega_n$(rad/s)} & 23.96 & 25.2  \\ \hline
+  \textbf{Natural Period (s)} & 0.262246& 0.249264  \\ \hline
+  \textbf{Damping ratio} & 0.0118&0.0114  \\ \hline
+  \textbf{Dumping Period(s)} & 0.262282&0.249296  \\ \hline
+  \end{tabular}
+\caption{Natural period, Dumping period and damping ratio from logarithmic decrement of the pull-back test.}
+\label{tab:pullback}
+\end{table}
+
+
+\subsection{Test with harmonic vibration at the base of varying fraequencies}
+
+\subsection{Seismic test with real earthquake records}
+
 
 
 

@@ -157,15 +157,15 @@ def regrecion_lineal (data, title):
     plt.figure(figsize=(10, 5))
 
     # Gráfico de ln_a1
-    plt.plot(data['t'], data['ln_a1'], label='ln_a1', color='blue')
+    plt.plot(data['t'], data['ln_a1'], label='ln(acceleration)', color='blue')
 
     # Gráfico de la línea de regresión
-    plt.plot(data['t'], regression_line, label=f'Regresión Lineal: y = {slope:.2f}x + {intercept:.2f}', color='red', linestyle='--')
+    plt.plot(data['t'], regression_line, label=f'Linear Regression: y = {slope:.2f}x + {intercept:.2f}', color='red', linestyle='--')
 
     # Título y etiquetas
-    plt.title('t vs ln_a1 con Regresión Lineal')
-    plt.xlabel('Tiempo (t)')
-    plt.ylabel('ln_a1')
+    plt.title('Time vs ln(acceleration) with Linear Regression')
+    plt.xlabel('Time (s)')
+    plt.ylabel('ln(acceleration)')
 
     # Mostrar la leyenda
     plt.legend()
