@@ -74,7 +74,7 @@ b = beta_ratio                   # ζ
 
 # === Leer excitación sísmica ===
 df = pd.read_csv(
-    'DATA/Concepcion_27F_60.txt',
+    'DATA/Kobe.txt',
     sep=r'\s+',
     header=None,
     names=['t','a1_meas','a2_base']
@@ -115,5 +115,5 @@ plt.title(f'Respuesta Newmark SDOF | fn={fn:.3f} Hz | ζ={beta_ratio:.3f}')
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
-#plt.savefig('RESULTADOS/respnewmark_Concepcion.png', dpi=300)
+plt.savefig('INFORME/GRAFICOS/respnewmark_Kobe.png', dpi=300)
 plt.show()

@@ -3,7 +3,7 @@
 % Paquetes de idioma y codificación
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[spanish]{babel}  % Ajusta el idioma del documento a español.
+%\usepackage[spanish]{babel}  % Ajusta el idioma del documento a español.
 \usepackage{tabularx}  % Permite la creación de tablas con ancho ajustable.
 
 \usepackage{caption}
@@ -11,6 +11,12 @@
 
 % Paquete de geometría para configurar márgenes y tamaño de papel
 \usepackage[letterpaper, margin=3cm]{geometry}
+
+\usepackage[spanish]{babel}
+\addto\captionsspanish{%
+  \renewcommand{\tablename}{Table}%
+  \renewcommand{\figurename}{Figure}%
+}
 
 % Paquetes de tipografía
 \usepackage{mathptmx}    % Usa Times New Roman como fuente.
@@ -427,17 +433,111 @@ Then, we analised the acceleration signal obtained from the system with damping 
 
 \subsection{Seismic test with real earthquake records}
 
+\section{Results - SEGUIR ANALIZANDO LOS CASOS Y COMPARARLOS}
 
+\subsection{Transmissibility Function}
 
+In this section, the natural frequency and damping ratio were adjusted so that the transmissibility function  fits the experimental data. The algorithm took as initial parameters the natural frequency and damping ratio obtained from the pull-back test. The transmissibility function was calculated using the following equation:
 
+\begin{equation}
+  TR = \frac{\ddot{u}}{\ddot{u_g}} = \sqrt{\frac{1+(2 \beta (\bar{\omega}/\omega_n)^2}{(1 - \frac{\bar{\omega}^2}{\omega_n^2})^2 + (2\beta\frac{\bar{\omega}}{\omega_n})^2}}
+\end{equation}
 
+Where:
+\begin{itemize}
+  \item $TR$ = transmissibility (dimensionless)
+  \item $\ddot{u_g}$ = output acceleration (m/s$^2$) (acceleration of the base) 
+  \item $\ddot{u}$ = input acceleration (m/s$^2$) (acceleration of the mass)
+  \item $\bar{\omega}$ = frequency of the input motion (rad/s)
+  \item $\omega_n$ = natural frequency of the system (rad/s)
+  \item $\beta$ = damping ratio (dimensionless)
+\end{itemize}
 
+The results are shown below:
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{GRAFICOS/TR_vs_teorico.png}
+  \caption{Transmissibility function - Experimental vs Theoretical.}
+  \label{fig:transmissibility}
+\end{figure}
 
+For better visualization, de frequency data was filtered between 1 - 10 Hz and the adjusted parameters for the function tu fit the experimental data were:
 
+\begin{table}[H]
+\centering
+\caption{Adjusted parameters for the transmissibility function.}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Parameter} & \textbf{Value} \\ \hline
+Natural Frequency ($f_n$) & 3.67 Hz \\ \hline
+Damping Ratio ($\beta$) & 0.0041 \\ \hline
+\end{tabular}
+\end{table}
 
+\subsection{Sismic Response}
 
+This section presents the result of the siesmic response of the structure due to the Concepcion and Kobe earthquakes. The following results were obtained by using the Newmark method.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{GRAFICOS/respnewmark_Concepcion.png}
+  \caption{Concepcion Earthquake - Sismic Response.}
+  \label{fig:concepcion}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{GRAFICOS/respnewmark_Kobe.png}
+  \caption{Kobe Earthquake - Sismic Response.}
+  \label{fig:kobe}
+\end{figure}
+
+\subsection{Transfer Function}
+
+The transfer function is a mathematical representation of the relationship between the input and output of a system in the frequency domain. It is defined as the ratio of the output response to the input response, and it can be calculated using the following formula:
+
+\begin{equation}
+  H(\omega) = \frac{\ddot{u}}{\ddot{u_g}} = \frac{X}{U}
+\end{equation}
+
+Where:
+\begin{itemize}
+  \item $H(\omega)$ = transfer function (dimensionless)
+  \item $\ddot{u_g}$ = output acceleration (m/s$^2$) (acceleration of the base) 
+  \item $\ddot{u}$ = input acceleration (m/s$^2$) (acceleration of the mass)
+  \item $X$ = output response (m/s$^2$)
+  \item $U$ = input response (m/s$^2$)
+\end{itemize}
+
+In this section the trasnfer function of the total acceleration and the base acceleration was determined, as well as an estimated natural frequency. The results are shown below:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{GRAFICOS/TransferFunction_TFEstimate.png}
+  \caption{Transfer Function - Total Acceleration vs Base Acceleration of the Concepcion Earthquake.}
+  \label{fig:transfer}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{GRAFICOS/TransferFunction_TFEstimate_Kobe.png}
+  \caption{Transfer Function - Total Acceleration vs Base Acceleration of the Kobe Earthquake.}
+  \label{fig:transfer_kobe}
+\end{figure}
+
+The estimated natural frequencies of both earthquakes are shown in the table below:
+
+\begin{table}[H]
+\centering
+\caption{Estimated natural frequencies of the earthquakes.}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Earthquake} & \textbf{Natural Frequency (Hz)} \\ \hline
+Concepcion & 3.81 \\ \hline
+Kobe & 4.10 \\ \hline
+\end{tabular}
+\end{table}
 
 
 
