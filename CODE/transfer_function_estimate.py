@@ -5,7 +5,7 @@ import os
 from scipy.signal import butter, filtfilt, detrend, welch, csd
 
 # === Leer señales ===
-data = pd.read_csv('DATA/Concepcion_27F_60.txt', sep=r'\s+', names=['t', 'a1', 'a2'])
+data = pd.read_csv('DATA/Kobe.txt', sep=r'\s+', names=['t', 'a1', 'a2'])
 
 # === Convertir aceleraciones de cm/s² a m/s² ===
 a1 = data['a1'].values * 0.01
@@ -28,6 +28,11 @@ f, Pxy = csd(a1_filt, a2_filt, fs=fs, nperseg=1024)
 _, Pxx = welch(a2_filt, fs=fs, nperseg=1024)
 Hf = np.abs(Pxy) / Pxx
 
+# === Encontrar frecuencia natural estimada ===
+idx_peak = np.argmax(Hf)          # índice del máximo de |H(f)|
+f_nat_est = f[idx_peak]           # frecuencia correspondiente
+print(f"Frecuencia natural estimada: {f_nat_est:.2f} Hz")
+
 # === Graficar ===
 plt.figure(figsize=(10, 6))
 plt.semilogy(f, Hf, label='Transfer Function |H(f)|')
@@ -39,5 +44,5 @@ plt.legend()
 plt.tight_layout()
 
 os.makedirs('INFORME/GRAFICOS', exist_ok=True)
-plt.savefig('INFORME/GRAFICOS/TransferFunction_TFEstimate.png', dpi=300)
+plt.savefig('INFORME/GRAFICOS/TransferFunction_TFEstimate_Kobe.png', dpi=300)
 plt.show()

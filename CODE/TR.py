@@ -53,13 +53,13 @@ TR_fit = TR_teorico(f_teo, fn_fit, beta_fit)
 
 # === Graficar ===
 plt.figure(figsize=(10, 6))
-plt.plot(f_teo, TR_exp, '-', label='Experimental (filtrada)', alpha=0.7)
-plt.plot(f_teo, TR_fit, '--', label=r'Ajuste: $f_n={:.2f}\,\mathrm{{Hz}},\, \beta={:.4f}$'.format(fn_fit, beta_fit))
-plt.xlabel('Frecuencia [Hz]')
-plt.ylabel('Función de Transmisibilidad TR')
+plt.plot(f_teo, TR_exp, '-', label='Experimental (filtered)', alpha=0.7)
+plt.plot(f_teo, TR_fit, '--', label=r'Adjusted: $f_n={:.2f}\,\mathrm{{Hz}},\, \beta={:.4f}$'.format(fn_fit, beta_fit))
+plt.xlabel('Frequency [Hz]')
+plt.ylabel('Transmissibility Function')
 plt.grid(True)
 plt.legend()
-plt.title('TR Experimental (Filtrada 1-10 Hz) vs Teórico Ajustado')
+plt.title('Experimental vs Theoretical Transmissibility Function')
 plt.tight_layout()
 
 os.makedirs('INFORME/GRAFICOS', exist_ok=True)
