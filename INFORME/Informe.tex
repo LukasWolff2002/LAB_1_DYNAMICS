@@ -543,6 +543,42 @@ Kobe & 4.10 \\ \hline
 \end{table}
 
 
+\newpage
+\section{Discussion}
+\subsection{Theoretical vs Experimental Results}
+
+The results from the pull-back test were compared to theoretical values calculated using the system's mass and stiffness. The natural frequency and period were obtained analytically, while the damping ratio was estimated experimentally using the logarithmic decrement method.
+
+As shown in Table~\ref{tab:results}, the experimental natural frequency and period differ from the theoretical values by approximately 12.3\% and 11\%, respectively. These differences may be due to modeling simplifications or experimental uncertainties. The measured damping ratio confirms that the system is lightly damped.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Parameter} & \textbf{Theoretical} & \textbf{Experimental} & \textbf{Error (\%)} \\ \hline
+Natural frequency $\omega_n$ (rad/s) & 26.9 & 23.96 & 12.3\% \\ \hline
+Natural period $T_n$ (s) & 0.233 & 0.262 & 11.0\% \\ \hline
+Damping ratio $\zeta$ & 0 & 0.0118 & -- \\ \hline
+\end{tabular}
+\caption{Comparison between theoretical and experimental values of natural frequency, period, and damping ratio.}
+\label{tab:results}
+\end{table}
+
+\subsection{Comparison of Dynamic Properties from Different Tests}
+
+Dynamic properties obtained from the pull-back test, harmonic excitation, and transfer function analysis were generally consistent, though slight differences were observed. The pull-back test yielded a natural frequency of 23.96~rad/s, while frequency-domain methods gave slightly lower values due to damping and processing effects. Damping ratios ranged from 0.0041 to 0.0118. Each method emphasized different aspects of system behavior, highlighting the influence of test conditions and input type.
+
+\subsection{Sources of Error and Improvement Suggestions}
+
+Discrepancies between theoretical and experimental results arise from modeling simplifications, such as idealized boundary conditions and neglected damping sources, as well as experimental factors like sensor noise and signal filtering. Variations in natural frequencies and damping ratios across tests highlight these limitations.
+
+To improve accuracy, future tests could use higher-resolution sensors, better mounting stability, and increased sampling rates. Additionally, repeating tests and validating results with numerical models would help enhance reliability.
+
+\newpage
+
+\section{Conclusions}
+
+The laboratory validated several key concepts introduced in lectures. The natural frequency and damping ratio of an SDOF system were successfully identified using the pull-back test and logarithmic decrement method, confirming the theoretical relationships between mass, stiffness, and frequency. The resonance phenomenon was clearly observed during harmonic base excitation, aligning with the predicted amplification at the system’s natural frequency. The transmissibility function and transfer function analysis also supported the expected frequency-dependent response behavior. Overall, the experiment demonstrated how theoretical dynamic models can accurately describe the real behavior of lightly damped systems.
 
 
 \end{document} 
