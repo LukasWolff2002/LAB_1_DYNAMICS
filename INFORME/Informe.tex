@@ -209,7 +209,7 @@ The experimental structure used to model the single degree of freedom (SDOF) sys
 \section{Theoretical Background}
 
 \subsection{Natural Frequency}
-The natural frecuency of a system is the rate at which the body oscillates when it is distrurbed without any damping or external forces acting on it. This parameter is crucial in understanding the dynamic behavior of structures, as it determines how the system will respond to external excitations. The natural frequency can be calculated using the following formula:
+The natural frequency of a system is the rate at which the body oscillates when it is disturbed without any damping or external forces acting on it. This parameter is crucial in understanding the dynamic behavior of structures, as it determines how the system will respond to external excitations. The natural frequency can be calculated using the following formula:
 \begin{equation}
 \omega_n = \sqrt{\frac{k}{m}}
 \end{equation}
@@ -223,7 +223,7 @@ Where:
 One of the important aspects of the natural frequency is that it is inversely proportional to the mass of the system. This means that as the mass increases, the natural frequency decreases, and vice versa. This relationship is crucial in designing structures to ensure they can withstand dynamic loads without resonating at their natural frequency.
 
 \subsection{Damping Ratio}
-The damping ratio is a parameter that has the effect of reduciong the oscillations of a system over time. In physical systems, damping is caused by energy dissipation mechanisms such as friction, air resistance or dampers. The damping ratio is defined as the ratio of the actual damping to the critical damping, and it can be calculated using the following formula:
+The damping ratio is a parameter that has the effect of reducing the oscillations of a system over time. In physical systems, damping is caused by energy dissipation mechanisms such as friction, air resistance or dampers. The damping ratio is defined as the ratio of the actual damping to the critical damping, and it can be calculated using the following formula:
 \begin{equation}
 \beta = \frac{c}{2\sqrt{mk}}
 \end{equation}
@@ -280,7 +280,7 @@ Where:
   \item $\beta$ = damping ratio (dimensionless)
 \end{itemize}
 
-Due to the transmissibility, if the excitation frecuency is much smaller than the natural frequency of the system ($\bar{\omega} < \omega_n$), the transmissibility is close to 1, which means that the input motion is transmitted to the output with little amplification. On the other hand, if the excitation frequency is bigger to the natural frequency of the system ($\bar{\omega} > \omega_n$), the transmissibility is close to 0, which means that the input motion is transmitted to the output with null amplification. Finally, if the excitation frequency is equal to the natural frequency of the system ($\bar{\omega} = \omega_n$), the transmissibility is infinite, which means that the input motion is transmitted to the output with a high amplification. This phenomenon is known as resonance.
+Due to the transmissibility, if the excitation frequency is much smaller than the natural frequency of the system ($\bar{\omega} < \omega_n$), the transmissibility is close to 1, which means that the input motion is transmitted to the output with little amplification. On the other hand, if the excitation frequency is larger than the natural frequency of the system ($\bar{\omega} > \omega_n$), the transmissibility is close to 0, which means that the input motion is transmitted to the output with null amplification. Finally, if the excitation frequency is equal to the natural frequency of the system ($\bar{\omega} = \omega_n$), the transmissibility is infinite, which means that the input motion is transmitted to the output with a high amplification. This phenomenon is known as resonance.
 
 \subsection{Resonance}
 Resonance is a phenomenon that occurs when the frequency of an external force matches the natural frequency of a system:
@@ -391,7 +391,7 @@ Post-processing of the data enabled the identification of the system’s dynamic
 
 \newpage
 \section{Results}
-To analise the results, we needed to process the data obtained from the sensors. This means that we needed to detrend the data and filter it to remove unwanted components. After that, the results were plotted and analyzed. The results are shown below.
+To analyse the results, we needed to process the data obtained from the sensors. This means that we needed to detrend the data and filter it to remove unwanted components. After that, the results were plotted and analyzed. The results are shown below.
 \subsection{Filtered Signal}
 \begin{figure}[h]
   \centering
@@ -412,7 +412,7 @@ With the filtered signal, we can start the analysis of the systems.
 \subsection{Pull-back Test}
 \subsubsection{Determination of the damping period, natural period and damping ratio}
 To determine the period of the systems, we used the logarithmic decrement method. This method is based on the analysis of the acceleration signal obtained from the accelerometer during the pull-back test. The logarithmic decrement is calculated using equation (\ref{eq:log_dec}).\\
-First, we analised the acceleration signal obtained from the system without damping (system 1). The signal was detrended and filtered to remove unwanted components. After that, we calculated the logarithmic decrement and plotted the results that are shown in Figure~\ref{fig:pullback1}.
+First, we analysed the acceleration signal obtained from the system without damping (system 1). The signal was detrended and filtered to remove unwanted components. After that, we calculated the logarithmic decrement and plotted the results that are shown in Figure~\ref{fig:pullback1}.
 
 
 
@@ -423,7 +423,7 @@ First, we analised the acceleration signal obtained from the system without damp
   \label{fig:pullback1}  
 \end{figure}
 
-Then, we analised the acceleration signal obtained from the system with damping (system 2). The signal was detrended and filtered to remove unwanted components. The resulting signal is shown in Figure~\ref{fig:pullback2}.
+Then, we analysed the acceleration signal obtained from the system with damping (system 2). The signal was detrended and filtered to remove unwanted components. The resulting signal is shown in Figure~\ref{fig:pullback2}.
 
 \begin{figure}[h]
   \centering
@@ -442,7 +442,7 @@ Then, we analised the acceleration signal obtained from the system with damping 
   \textbf{$\omega_n$(rad/s)} & 23.96 & 25.2  \\ \hline
   \textbf{Natural Period (s)} & 0.262246& 0.249264  \\ \hline
   \textbf{Damping ratio} & 0.0118&0.0114  \\ \hline
-  \textbf{Dumping Period(s)} & 0.262282&0.249296  \\ \hline
+  \textbf{Damping Period(s)} & 0.262282&0.249296  \\ \hline
   \end{tabular}
 \caption{Natural period, Dumping period and damping ratio from logarithmic decrement of the pull-back test.}
 \label{tab:pullback}
@@ -478,21 +478,21 @@ Damping Ratio ($\beta$) & 0.0041 \\ \hline
 \end{tabular}
 \end{table}
 
-\subsection{Sismic Response}
+\subsection{Seismic Response}
 
 This section presents the result of the sismic response of the structure due to the Concepcion and Kobe earthquakes. The following results were obtained by using the Newmark method.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{GRAFICOS/respnewmark_Concepcion.png}
-  \caption{Concepcion Earthquake - Sismic Response.}
+  \caption{Concepcion Earthquake - Seismic Response.}
   \label{fig:concepcion}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{GRAFICOS/respnewmark_Kobe.png}
-  \caption{Kobe Earthquake - Sismic Response.}
+  \caption{Kobe Earthquake - Seismic Response.}
   \label{fig:kobe}
 \end{figure}
 
@@ -513,7 +513,7 @@ Where:
   \item $U$ = input response (m/s$^2$)
 \end{itemize}
 
-In this section the trasnfer function of the total acceleration and the base acceleration was determined, as well as an estimated natural frequency. The results are shown below:
+In this section the transfer function of the total acceleration and the base acceleration was determined, as well as an estimated natural frequency. The results are shown below:
 
 \begin{figure}[H]
   \centering
@@ -580,5 +580,21 @@ To improve accuracy, future tests could use higher-resolution sensors, better mo
 
 The laboratory validated several key concepts introduced in lectures. The natural frequency and damping ratio of an SDOF system were successfully identified using the pull-back test and logarithmic decrement method, confirming the theoretical relationships between mass, stiffness, and frequency. The resonance phenomenon was clearly observed during harmonic base excitation, aligning with the predicted amplification at the system’s natural frequency. The transmissibility function and transfer function analysis also supported the expected frequency-dependent response behavior. Overall, the experiment demonstrated how theoretical dynamic models can accurately describe the real behavior of lightly damped systems.
 
+\newpage
+\begin{thebibliography}{99}
+
+\bibitem{endevco2132}
+Endevco. \textit{Model 2132 Accelerometer Datasheet}. Available at: \url{https://buy.endevco.com/contentstore/mktgcontent/endevco/datasheet/2132.pdf}. Accessed April 5, 2025.
+
+\bibitem{quantumx}
+HBM. \textit{QuantumX CX22B-W Data Recorder}. Available at: \url{https://www.hbm.com/en/2486/quantumx-cx22bw-data-recorder/?product_type_no=QuantumX%20CX22B-W%20Data%20Recorder}. Accessed April 5, 2025.
+
+\bibitem{tdgshaketable}
+Quakelogic / TDG. \textit{TDG Shake Table 250kg – Datasheet}. Available at: \url{https://www.quakelogic.net/datasheets/TDG-shaketable-250kg.pdf}. Accessed April 5, 2025.
+
+\bibitem{easytest}
+TDG. \textit{EasyTest Shake Table Software}. Available at: \url{https://tdg.com.tr/en/products/software/easytest-shaketable}. Accessed April 5, 2025.
+
+\end{thebibliography}
 
 \end{document} 
