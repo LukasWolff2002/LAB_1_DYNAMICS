@@ -199,7 +199,7 @@ To understand the dynamic behavior of complex structures with multiple degrees o
   \label{fig:sdof}
 \end{figure}
   
-The experimental structure used to model the single degree of freedom (SDOF) system consists of a vertical flexible rod rigidly fixed at its base. At the top of the rod, a small mass is attached, allowing for lateral motion when the system is excited. The input motion is applied at the base (as indicated by the “Input” label in the figure), while the output is measured at the top mass using a acceleration sensor (labeled “Output”). This setup simulates the behavior of an idealized SDOF system by allowing one mode of vibration in the lateral direction, the mass, the flexural stiffness of the rod, and the system's inherent damping.
+The experimental structure used to model the single degree of freedom (SDOF) system consists of a vertical flexible rod rigidly fixed at its base. At the top of the rod, a small mass is attached, allowing for lateral motion when the system is excited. The input motion is applied at the base (as indicated by the “Input” label in the figure), while the output is measured at the top mass using a acceleration sensor (labeled “Output”). This setup simulates the behavior of an idealized SDOF system by allowing one mode of vibration in the lateral direction, the mass, the flexural stiffness of the rod, and the system's inherent damping. It is important to note that, there will be 2 systems analyzed in this laboratory, one without damping (system 1) and one with damping (system 2). The system with damping will have a toothbrush as a damper, while the system without damping will not. 
 
 
 
@@ -268,6 +268,7 @@ The harmonic base excitation is a phenomenon that occurs when a system is subjec
 Transmissibility is a measure of how much the input motion is transmitted to the output of a system. It is defined as the ratio of the output response to the input response, and it can be calculated using the following formula:
 \begin{equation}
 TR = \frac{\ddot{X}}{\ddot{X_g}} = \sqrt{\frac{1+(2 \beta (\bar{\omega}/\omega_n)^2}{(1 - \frac{\bar{\omega}^2}{\omega_n^2})^2 + (2\beta\frac{\bar{\omega}}{\omega_n})^2}} 
+\label{eq:transmissibility}
 \end{equation}
 Where:
 \begin{itemize}
@@ -390,7 +391,24 @@ Post-processing of the data enabled the identification of the system’s dynamic
 
 \newpage
 \section{Results}
- 
+To analise the results, we needed to process the data obtained from the sensors. This means that we needed to detrend the data and filter it to remove unwanted components. After that, the results were plotted and analyzed. The results are shown below.
+\subsection{Filtered Signal}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{GRAFICOS/pullback_first.png}
+  \caption{Filtered signal of the pull-back test of system 1.}
+  \label{fig:filtered_signal1}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{GRAFICOS/pullback_second.png}
+  \caption{Filtered signal of the pull-back test of system 1.}
+  \label{fig:filtered_signal2}
+\end{figure}
+
+With the filtered signal, we can start the analysis of the systems.
+
 \subsection{Pull-back Test}
 \subsubsection{Determination of the damping period, natural period and damping ratio}
 To determine the period of the systems, we used the logarithmic decrement method. This method is based on the analysis of the acceleration signal obtained from the accelerometer during the pull-back test. The logarithmic decrement is calculated using equation (\ref{eq:log_dec}).\\
@@ -414,6 +432,8 @@ Then, we analised the acceleration signal obtained from the system with damping 
   \label{fig:pullback2}  
 \end{figure}
 
+\newpage
+
 \begin{table}[h]
 \centering
   \begin{tabular}{|c|c|c|}
@@ -428,30 +448,13 @@ Then, we analised the acceleration signal obtained from the system with damping 
 \label{tab:pullback}
 \end{table}
 
+As shown in Table~\ref{tab:pullback}, the natural period of the system without damping (system 1) is 0.262246 s, is slightly higher than the natural period of the system with damping (system 2), which is 0.249264 s. This is expected, as the presence of damping reduces the natural frequency of the system.\\
 
-\subsection{Test with harmonic vibration at the base of varying fraequencies}
+Figures~\ref{fig:pullback1} and~\ref{fig:pullback2} display the natural logarithm of acceleration versus time for Systems 1 and 2, respectively. For System 1, the regression line shows a slope of approximately $-0.28$, while for System 2 the slope is about $-0.29$. These results are consistent with the damping ratios previously calculated using the system's natural frequencies. Both systems exhibit very low damping, confirming that they behave as lightly damped single-degree-of-freedom systems. The linear trend of the logarithmic amplitude also supports the assumption of linear damping in the analysis.
 
-\subsection{Seismic test with real earthquake records}
+\subsection{Test with harmonic vibration at the base of varying frequencies}
 
-\section{Results - SEGUIR ANALIZANDO LOS CASOS Y COMPARARLOS}
-
-\subsection{Transmissibility Function}
-
-In this section, the natural frequency and damping ratio were adjusted so that the transmissibility function  fits the experimental data. The algorithm took as initial parameters the natural frequency and damping ratio obtained from the pull-back test. The transmissibility function was calculated using the following equation:
-
-\begin{equation}
-  TR = \frac{\ddot{u}}{\ddot{u_g}} = \sqrt{\frac{1+(2 \beta (\bar{\omega}/\omega_n)^2}{(1 - \frac{\bar{\omega}^2}{\omega_n^2})^2 + (2\beta\frac{\bar{\omega}}{\omega_n})^2}}
-\end{equation}
-
-Where:
-\begin{itemize}
-  \item $TR$ = transmissibility (dimensionless)
-  \item $\ddot{u_g}$ = output acceleration (m/s$^2$) (acceleration of the base) 
-  \item $\ddot{u}$ = input acceleration (m/s$^2$) (acceleration of the mass)
-  \item $\bar{\omega}$ = frequency of the input motion (rad/s)
-  \item $\omega_n$ = natural frequency of the system (rad/s)
-  \item $\beta$ = damping ratio (dimensionless)
-\end{itemize}
+In this section, the natural frequency and damping ratio were adjusted so that the transmissibility function  fits the experimental data. The algorithm took as initial parameters the natural frequency and damping ratio obtained from the pull-back test. The transmissibility function was calculated using equation (\ref{eq:transmissibility}).
 
 The results are shown below:
 
@@ -462,7 +465,7 @@ The results are shown below:
   \label{fig:transmissibility}
 \end{figure}
 
-For better visualization, de frequency data was filtered between 1 - 10 Hz and the adjusted parameters for the function tu fit the experimental data were:
+For better visualization, de frequency data was filtered between 1 - 10 Hz and the adjusted parameters for the function to fit the experimental data were:
 
 \begin{table}[H]
 \centering
@@ -477,7 +480,7 @@ Damping Ratio ($\beta$) & 0.0041 \\ \hline
 
 \subsection{Sismic Response}
 
-This section presents the result of the siesmic response of the structure due to the Concepcion and Kobe earthquakes. The following results were obtained by using the Newmark method.
+This section presents the result of the sismic response of the structure due to the Concepcion and Kobe earthquakes. The following results were obtained by using the Newmark method.
 
 \begin{figure}[H]
   \centering

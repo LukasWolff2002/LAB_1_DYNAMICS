@@ -74,9 +74,9 @@ def plot_data (data):
 
     # Gráfico de t vs a1
     plt.plot(data['t'], data['a1'], label='a1', color='blue')
-    plt.title('Gráfico de t vs a1')
-    plt.xlabel('Tiempo (t)')
-    plt.ylabel('a1')
+    plt.title('Graph time vs acceleration')
+    plt.xlabel('Time (s)')
+    plt.ylabel('Acceleration (m/s²)')
     plt.tight_layout()
     plt.savefig('INFORME/GRAFICOS/t_vs_a1.png', dpi=300)
     plt.close()
@@ -127,19 +127,19 @@ second_dataframe['t'] = second_dataframe['t'] - second_dataframe['t'].iloc[0]
 # El segundo dataframe está listo
 second_dataframe.head()
 
-def plot_pullback(data, title):
+def plot_pullback(data, title, i):
     # Graficar el primer intervalo (0-35 segundos)
     plt.figure(figsize=(6, 5))
     plt.plot(data['t'], data['a1'], label='a1', color='blue')
-    plt.title('Primer intervalo: t vs a1')
-    plt.xlabel('Tiempo (t)')
-    plt.ylabel('a1')
+    plt.title(f'System {i} - Pullback')
+    plt.xlabel('Time (s)')
+    plt.ylabel('acceleration (m/s²)')
     plt.tight_layout()
     plt.savefig(f'INFORME/GRAFICOS/pullback_{title}.png', dpi=300)
     plt.close()
 
-plot_pullback(first_dataframe, 'first')
-plot_pullback(second_dataframe, 'second')
+plot_pullback(first_dataframe, 'first', 1)
+plot_pullback(second_dataframe, 'second', 2)
 
 # Ahora agrego una nueva columna a cada dataframe para poder hacer la regresión lineal
 first_dataframe.loc[:, 'ln_a1'] = np.log(np.abs(first_dataframe['a1'] * g))
