@@ -1,10 +1,6 @@
 \relax 
 \providecommand\babel@aux[2]{}
 \@nameuse{bbl@beforestart}
-\catcode `"\active 
-\catcode `<\active 
-\catcode `>\active 
-\@nameuse{es@quoting}
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
@@ -12,7 +8,7 @@
 \providecommand\pbs@seq@push@cx[2]{}
 \providecommand\mix@newkey[2]{}
 \bibstyle{unsrtnat}
-\babel@aux{spanish}{}
+\babel@aux{english}{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Single Degree of Freedom System.}}{1}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
@@ -21,9 +17,11 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Natural Frequency}{2}{subsection.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Damping Ratio}{2}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Logarithmic Decrement}{2}{subsection.2.3}\protected@file@percent }
+\newlabel{eq:log_dec}{{4}{3}{Logarithmic Decrement}{equation.2.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Harmonic base excitation}{3}{subsection.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Transmissibility}{3}{subsection.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Resonance}{4}{subsection.2.6}\protected@file@percent }
+\newlabel{eq:transmissibility}{{5}{3}{Transmissibility}{equation.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Resonance}{3}{subsection.2.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Structure Description}{5}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Instrumentation Details}{6}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Endevco 44A16 Accelerometer}{6}{subsection.4.1}\protected@file@percent }
@@ -31,20 +29,46 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}TDG-250 KG Shaking Table}{6}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Signal Processing}{7}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {6}Laboratory Methodology}{8}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Results - SEGUIR ANALIZANDO LOS CASOS Y COMPARARLOS}{9}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Transmissibility Function}{9}{subsection.7.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Transmissibility function - Experimental vs Theoretical.}}{9}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:transmissibility}{{2}{9}{Transmissibility function - Experimental vs Theoretical}{figure.caption.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Adjusted parameters for the transmissibility function.}}{10}{table.caption.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Sismic Response}{10}{subsection.7.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Concepcion Earthquake - Sismic Response.}}{10}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:concepcion}{{3}{10}{Concepcion Earthquake - Sismic Response}{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Kobe Earthquake - Sismic Response.}}{11}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:kobe}{{4}{11}{Kobe Earthquake - Sismic Response}{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Transfer Function}{11}{subsection.7.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Transfer Function - Total Acceleration vs Base Acceleration of the Concepcion Earthquake.}}{12}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:transfer}{{5}{12}{Transfer Function - Total Acceleration vs Base Acceleration of the Concepcion Earthquake}{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Transfer Function - Total Acceleration vs Base Acceleration of the Kobe Earthquake.}}{12}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:transfer_kobe}{{6}{12}{Transfer Function - Total Acceleration vs Base Acceleration of the Kobe Earthquake}{figure.caption.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Estimated natural frequencies of the earthquakes.}}{12}{table.caption.8}\protected@file@percent }
-\gdef \@abspage@last{13}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Results}{9}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Filtered Signal}{9}{subsection.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Filtered signal of the pull-back test of system 1.}}{9}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:filtered_signal1}{{2}{9}{Filtered signal of the pull-back test of system 1}{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Filtered signal of the pull-back test of system 1.}}{9}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:filtered_signal2}{{3}{9}{Filtered signal of the pull-back test of system 1}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Pull-back Test}{10}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Determination of the damping period, natural period and damping ratio}{10}{subsubsection.7.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Logarithmic decrement of the pull-back test.}}{10}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:pullback1}{{4}{10}{Logarithmic decrement of the pull-back test}{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Logarithmic decrement of the pull-back test.}}{10}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:pullback2}{{5}{10}{Logarithmic decrement of the pull-back test}{figure.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Natural period, Dumping period and damping ratio from logarithmic decrement of the pull-back test.}}{11}{table.caption.6}\protected@file@percent }
+\newlabel{tab:pullback}{{1}{11}{Natural period, Dumping period and damping ratio from logarithmic decrement of the pull-back test}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Test with harmonic vibration at the base of varying frequencies}{11}{subsection.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Transmissibility function - Experimental vs Theoretical.}}{11}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:transmissibility}{{6}{11}{Transmissibility function - Experimental vs Theoretical}{figure.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Adjusted parameters for the transmissibility function.}}{12}{table.caption.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Seismic Response}{12}{subsection.7.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Concepcion Earthquake - Seismic Response.}}{12}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:concepcion}{{7}{12}{Concepcion Earthquake - Seismic Response}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Kobe Earthquake - Seismic Response.}}{12}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:kobe}{{8}{12}{Kobe Earthquake - Seismic Response}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Transfer Function}{13}{subsection.7.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Transfer Function - Total Acceleration vs Base Acceleration of the Concepcion Earthquake.}}{13}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:transfer}{{9}{13}{Transfer Function - Total Acceleration vs Base Acceleration of the Concepcion Earthquake}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Transfer Function - Total Acceleration vs Base Acceleration of the Kobe Earthquake.}}{14}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:transfer_kobe}{{10}{14}{Transfer Function - Total Acceleration vs Base Acceleration of the Kobe Earthquake}{figure.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Estimated natural frequencies of the earthquakes.}}{14}{table.caption.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{15}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Theoretical vs Experimental Results}{15}{subsection.8.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparison between theoretical and experimental values of natural frequency, period, and damping ratio.}}{15}{table.caption.14}\protected@file@percent }
+\newlabel{tab:results}{{4}{15}{Comparison between theoretical and experimental values of natural frequency, period, and damping ratio}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Comparison of Dynamic Properties from Different Tests}{15}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Sources of Error and Improvement Suggestions}{15}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusions}{16}{section.9}\protected@file@percent }
+\citation{*}
+\bibdata{referencias}
+\bibcite{endevco2132}{{1}{2025}{{Endevco}}{{}}}
+\bibcite{quantumx}{{2}{2025}{{HBM}}{{}}}
+\bibcite{tdgshaketable}{{3}{2025}{{Quakelogic and TDG}}{{}}}
+\bibcite{easytest}{{4}{2025}{{TDG}}{{}}}
+\gdef \@abspage@last{18}
